@@ -7,7 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:stack_trace/stack_trace.dart' as stack_trace;
 
-import 'core/utils/storage_utils.dart';
+import 'core/utils/sharedPrefs_utils.dart';
 import 'l10n/support_locale.dart';
 import 'presentation/activity_list/screen/activity_list_screen.dart';
 import 'presentation/common/core/services/text_to_speech_service.dart';
@@ -17,13 +17,14 @@ import 'presentation/login/screen/login_screen.dart';
 import 'presentation/registration/screen/registration_screen.dart';
 import 'presentation/sum_up/screen/sum_up_screen.dart';
 
-/// Global navigator key to access the navigator from anywhere in the app.
+
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
   ]);
 
   runApp(
@@ -37,28 +38,23 @@ void main() async {
   };
 }
 
-/// Provider for the MyAppViewModel.
 final myAppProvider = Provider((ref) {
   return MyAppViewModel(ref);
 });
 
-/// ViewModel for the main app.
-class MyAppViewModel {
+interface class MyAppViewModel {
   final Ref ref;
 
   MyAppViewModel(this.ref);
 
-  /// Initializes the app, e.g., initializes services.
   void init() {
     ref.read(textToSpeechService).init();
   }
 
-  /// Retrieves the JWT token from storage.
   Future<String?> getJwt() async {
-    return StorageUtils.getJwt();
+    return PrefsUtils.getJwt();
   }
 
-  /// Retrieves the localized configuration based on the current locale.
   Future<AppLocalizations> getLocalizedConf() async {
     final lang = ui.window.locale.languageCode;
     final country = ui.window.locale.countryCode;
@@ -66,11 +62,9 @@ class MyAppViewModel {
   }
 }
 
-/// The main app widget.
 class MyApp extends HookConsumerWidget {
   const MyApp({super.key});
 
-  /// Builds the MaterialApp with the provided home widget.
   MaterialApp buildMaterialApp(Widget home) {
     return MaterialApp(
       initialRoute: '/',
@@ -85,11 +79,11 @@ class MyApp extends HookConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textSelectionTheme: TextSelectionThemeData(
-          cursorColor: Colors.teal.shade800,
-          selectionColor: Colors.teal.shade800,
-          selectionHandleColor: Colors.teal.shade800,
+          cursorColor: Colors.pink.shade800,
+          selectionColor: Colors.pink.shade800,
+          selectionHandleColor: Colors.pink.shade800,
         ),
-        primaryColor: Colors.teal.shade800,
+        primaryColor: Colors.pink.shade800,
         bottomSheetTheme:
             const BottomSheetThemeData(backgroundColor: Colors.transparent),
       ),

@@ -1,11 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-/// Represents a failure object that can be used for error handling and reporting.
-class Failure extends Equatable {
-  /// The error message associated with the failure.
+interface class Failure extends Equatable {
   final String message;
 
-  /// Constructs a Failure object with the given [message].
   const Failure({required this.message});
 
   @override

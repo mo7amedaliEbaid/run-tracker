@@ -17,7 +17,6 @@ import '../../common/metrics/widgets/metrics.dart';
 import '../../common/timer/widgets/timer_text.dart';
 import '../view_model/activity_details_view_model.dart';
 
-/// The screen that displays details of a specific activity.
 class ActivityDetailsScreen extends HookConsumerWidget {
   final Activity activity;
 

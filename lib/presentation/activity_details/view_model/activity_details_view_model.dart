@@ -3,7 +3,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:latlong2/latlong.dart';
 
-import '../../../core/utils/storage_utils.dart';
+import '../../../core/utils/sharedPrefs_utils.dart';
 import '../../../data/api/activity_api.dart';
 import '../../../data/model/request/activity_request.dart';
 import '../../../data/model/request/location_request.dart';
@@ -106,8 +106,8 @@ class ActivityDetailsViewModel extends StateNotifier<ActivityDetailsState> {
                     longitude: l.longitude))
                 .toList()))
         .then((activityEdited) {
-      StorageUtils.removeCachedDataFromUrl(
-          '${ActivityApi.url}${activityEdited.id}');
+      PrefsUtils.removeCachedDataFromUrl(
+          '${ActivityApi.URL}${activityEdited.id}');
       state = state.copyWith(activity: activityEdited);
 
       final activityListViewModel =

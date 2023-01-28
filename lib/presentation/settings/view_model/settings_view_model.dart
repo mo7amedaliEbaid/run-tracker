@@ -34,7 +34,7 @@ class SettingsViewModel extends StateNotifier<SettingsState> {
   Future<void> deleteUserAccount() async {
     try {
       state = state.copyWith(isLoading: true);
-      await ref.read(userRepositoryProvider).delete();
+      await ref.read(userRepositoryProvider).deleteaccount();
       await clearStorage();
       navigatorKey.currentState?.pushReplacementNamed("/login");
     } catch (error) {

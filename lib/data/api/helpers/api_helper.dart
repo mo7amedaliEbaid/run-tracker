@@ -1,24 +1,16 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import '../../../core/utils/storage_utils.dart';
+import '../../../core/utils/sharedPrefs_utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/error.dart';
 import '../../../main.dart';
 import '../user_api.dart';
 
-/// Helper class for making API requests.
-class ApiHelper {
-  //static const String apiUrl = 'https://runbackendrun.herokuapp.com/api/';
-  //static const String apiUrl = 'https://runbackendrun.onrender.com/api/';
-  static const String apiUrl = 'http://tiqorhzmyb.eu11.qoddiapp.com/api/';
-  //static const String apiUrl =
-  //   'https://runbackendrun-production.up.railway.app/api/';
+interface class ApiHelper {
 
-  /// Makes an HTTP request to the specified [url] using the given [method].
-  ///
-  /// Optional [data] and [queryParams] can be provided for POST, PUT, and DELETE requests.
-  /// Returns the [Response] object or null if an unauthorized error occurs and user navigation is handled.
+  static const String BASEURL = 'http://tiqorhzmyb.eu11.qoddiapp.com/api/';
+
   static Future<Response?> makeRequest(
     String url,
     String method, {
@@ -59,7 +51,7 @@ class ApiHelper {
           break;
       }
       return response;
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       if (error.response?.statusCode == 401) {
         return remoteApi.handleUnauthorizedError(error, data, queryParams);
       }
@@ -68,19 +60,16 @@ class ApiHelper {
   }
 }
 
-/// Wrapper class for the Dio library with additional functionality.
-class RemoteApi {
+interface class RemoteApi {
   late String url;
   late Dio dio;
   late SharedPreferences prefs;
 
-  /// Constructs a RemoteApi object with the given [url].
   RemoteApi(this.url) {
     dio = Dio();
     initCache();
   }
 
-  /// Initializes the shared preferences cache.
   Future<void> initCache() async {
     prefs = await SharedPreferences.getInstance();
 
@@ -128,32 +117,29 @@ class RemoteApi {
 
         handler.next(response);
       },
-      onError: (DioError error, ErrorInterceptorHandler handler) async {
+      onError: (DioException error, ErrorInterceptorHandler handler) async {
         handler.next(error);
       },
     ));
   }
 
-  /// Sets the JWT in the request headers.
   Future<void> setJwt() async {
-    final jwt = await StorageUtils.getJwt();
+    final jwt = await PrefsUtils.getJwt();
     if (jwt != null) {
       dio.options.headers['Authorization'] = 'Bearer $jwt';
     }
   }
 
-  /// Handles an unauthorized error by refreshing the JWT and making the request again.
-  ///
-  /// Returns the [Response] object or null if navigation to the login screen occurs.
-  Future<Response?> handleUnauthorizedError(DioError error,
-      Map<String, dynamic>? data, Map<String, dynamic>? queryParams) async {
+
+  Future<Response?> handleUnauthorizedError(DioException error,
+      Map<String, dynamic>? data, Map<String, dynamic>? queryParameters) async {
     try {
       String? jwt = await UserApi.refreshToken();
       try {
         var headers = error.requestOptions.headers;
         headers['Authorization'] = 'Bearer $jwt';
         return await dio.request(
-          queryParameters: queryParams,
+          queryParameters: queryParameters,
           data: data,
           error.requestOptions.path,
           options: Options(
@@ -163,10 +149,10 @@ class RemoteApi {
             responseType: error.requestOptions.responseType,
           ),
         );
-      } on DioError catch (_) {
+      } on DioException catch (_) {
         navigatorKey.currentState?.pushReplacementNamed('/login');
       }
-    } on DioError {
+    } on DioException {
       navigatorKey.currentState?.pushReplacementNamed('/login');
     }
     return null;

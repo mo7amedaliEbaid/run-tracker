@@ -5,23 +5,21 @@ import '../../domain/repositories/activity_repository.dart';
 import '../api/activity_api.dart';
 import '../model/request/activity_request.dart';
 
-/// Provider for the ActivityRepository implementation.
 final activityRepositoryProvider =
-    Provider<ActivityRepository>((ref) => ActivityRepositoryImpl());
+    Provider<ActivityRepository>((ref) => ActivityRepoImpl());
 
-/// Implementation of the ActivityRepository.
-class ActivityRepositoryImpl extends ActivityRepository {
-  ActivityRepositoryImpl();
+interface class ActivityRepoImpl extends ActivityRepository {
+  ActivityRepoImpl();
 
   @override
   Future<List<Activity>> getActivities() async {
-    final activityResponses = await ActivityApi.getActivities();
+    final activityResponses = await ActivityApi.getrecentActivities();
     return activityResponses.map((response) => response.toEntity()).toList();
   }
 
   @override
   Future<Activity> getActivityById({required String id}) async {
-    final activityResponse = await ActivityApi.getActivityById(id);
+    final activityResponse = await ActivityApi.getrecentActivityById(id);
     return activityResponse.toEntity();
   }
 
