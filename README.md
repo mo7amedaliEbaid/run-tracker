@@ -1,6 +1,8 @@
 # run_tracker
 A flutter run tracker app - Clean architecture.
 
+It's a run tracker app to track the distance , speed and time of your activity (running, cycling,......).
+
 ### State Management
 - Riverpod
 
