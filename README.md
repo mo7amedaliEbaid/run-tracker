@@ -1,5 +1,5 @@
 # run_tracker
-A flutter run tracker app.
+A flutter run tracker app - Clean architecture.
 
 ### State Management
 - Riverpod
