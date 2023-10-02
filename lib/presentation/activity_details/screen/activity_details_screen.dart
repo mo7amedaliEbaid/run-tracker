@@ -31,11 +31,9 @@ class ActivityDetailsScreen extends HookConsumerWidget {
     final displayedActivity = state.activity ?? activity;
     ActivityType selectedType = state.type ?? displayedActivity.type;
 
-    // Calculate the points for the location map.
     final List<LatLng> points = provider.savedPositionsLatLng(activity);
     final List<Marker> markers = [];
 
-    // Add markers to the map if activity locations are available.
     if (activity.locations.isNotEmpty) {
       markers.add(
         Marker(
@@ -99,7 +97,7 @@ class ActivityDetailsScreen extends HookConsumerWidget {
                       const SizedBox(width: 10),
                       Text(
                         ActivityUtils.translateActivityTypeValue(
-                          AppLocalizations.of(context),
+                          AppLocalizations.of(context)!,
                           displayedActivity.type,
                         ),
                         style: const TextStyle(
@@ -124,10 +122,10 @@ class ActivityDetailsScreen extends HookConsumerWidget {
                           QuickAlert.show(
                             context: context,
                             type: QuickAlertType.confirm,
-                            title: AppLocalizations.of(context)
+                            title: AppLocalizations.of(context)!
                                 .ask_activity_removal,
-                            confirmBtnText: AppLocalizations.of(context).delete,
-                            cancelBtnText: AppLocalizations.of(context).cancel,
+                            confirmBtnText: AppLocalizations.of(context)!.delete,
+                            cancelBtnText: AppLocalizations.of(context)!.cancel,
                             confirmBtnColor: Colors.red,
                             onCancelBtnTap: () => Navigator.of(context).pop(),
                             onConfirmBtnTap: () =>

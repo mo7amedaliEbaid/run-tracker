@@ -1,9 +1,6 @@
-/// Represents the state of the send new password screen.
-class SendNewPasswordState {
-  /// The email entered by the user.
+interface class SendNewPasswordState {
   final String email;
 
-  /// Indicates whether the mail is sending
   final bool isSending;
 
   const SendNewPasswordState({
@@ -11,7 +8,6 @@ class SendNewPasswordState {
     required this.isSending,
   });
 
-  /// Creates an initial instance of [SendNewPasswordState].
   factory SendNewPasswordState.initial() {
     return const SendNewPasswordState(
       email: '',
@@ -19,7 +15,6 @@ class SendNewPasswordState {
     );
   }
 
-  /// Creates a copy of [SendNewPasswordState] with the specified fields replaced with new values.
   SendNewPasswordState copyWith({
     String? email,
     bool? isSending,

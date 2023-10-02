@@ -12,7 +12,6 @@ import '../view_model/login_view_model.dart';
 class LoginScreen extends HookConsumerWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  /// Constructs a [LoginScreen].
   LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -34,7 +33,7 @@ class LoginScreen extends HookConsumerWidget {
                       child: Align(
                         alignment: AlignmentDirectional.topStart,
                         child: Text(
-                          '${AppLocalizations.of(context).hello},',
+                          '${AppLocalizations.of(context)!.hello},',
                           style: const TextStyle(
                               color: Colors.white, fontSize: 33),
                         ),
@@ -55,7 +54,7 @@ class LoginScreen extends HookConsumerWidget {
                                 style: FormUtils.darkTextFormFieldStyle,
                                 cursorColor: Colors.teal.shade100,
                                 decoration: FormUtils.createInputDecorative(
-                                    AppLocalizations.of(context).email,
+                                    AppLocalizations.of(context)!.email,
                                     dark: true,
                                     icon: Icons.email),
                                 validator: (value) =>
@@ -67,7 +66,7 @@ class LoginScreen extends HookConsumerWidget {
                               TextFormField(
                                 style: FormUtils.darkTextFormFieldStyle,
                                 decoration: FormUtils.createInputDecorative(
-                                    AppLocalizations.of(context).password,
+                                    AppLocalizations.of(context)!.password,
                                     dark: true,
                                     icon: Icons.password),
                                 obscureText: true,
@@ -89,7 +88,7 @@ class LoginScreen extends HookConsumerWidget {
                                     const Icon(Icons.login),
                                     const SizedBox(width: 8),
                                     Text(
-                                      AppLocalizations.of(context).login_page,
+                                      AppLocalizations.of(context)!.login_page,
                                     ),
                                   ],
                                 ),
@@ -121,7 +120,8 @@ class LoginScreen extends HookConsumerWidget {
                                     const Icon(Icons.app_registration),
                                     const SizedBox(width: 8),
                                     Text(
-                                      AppLocalizations.of(context).registration,
+                                      AppLocalizations.of(context)!
+                                          .registration,
                                     ),
                                   ],
                                 ),
@@ -147,7 +147,7 @@ class LoginScreen extends HookConsumerWidget {
                                   );
                                 },
                                 child: Text(
-                                  AppLocalizations.of(context)
+                                  AppLocalizations.of(context)!
                                       .send_new_password,
                                   style: const TextStyle(
                                       color: Colors.white,

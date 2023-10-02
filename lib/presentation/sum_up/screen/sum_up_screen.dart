@@ -31,7 +31,6 @@ class SumUpScreen extends HookConsumerWidget {
 
     final List<Marker> markers = [];
 
-    // Add markers to the map if activity locations are available.
     if (locations.isNotEmpty) {
       markers.add(
         Marker(
@@ -87,7 +86,7 @@ class SumUpScreen extends HookConsumerWidget {
                   Container(
                     padding: const EdgeInsets.only(left: 0, top: 12),
                     child: Text(
-                      AppLocalizations.of(context).activity_sumup,
+                      AppLocalizations.of(context)!.activity_sumup,
                       style: const TextStyle(
                           color: Colors.blueGrey,
                           fontSize: 28,

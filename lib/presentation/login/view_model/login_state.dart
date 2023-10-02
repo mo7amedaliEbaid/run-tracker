@@ -1,12 +1,8 @@
-/// Represents the state of the login screen.
-class LoginState {
-  /// The username entered by the user.
+interface class LoginState {
   final String username;
 
-  /// The password entered by the user.
   final String password;
 
-  /// Indicates whether the user is currently logging in.
   final bool isLogging;
 
   const LoginState({
@@ -15,7 +11,6 @@ class LoginState {
     required this.isLogging,
   });
 
-  /// Creates an initial instance of [LoginState].
   factory LoginState.initial() {
     return const LoginState(
       username: '',
@@ -24,7 +19,6 @@ class LoginState {
     );
   }
 
-  /// Creates a copy of [LoginState] with the specified fields replaced with new values.
   LoginState copyWith({
     String? username,
     String? password,

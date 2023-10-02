@@ -9,14 +9,10 @@ import '../utils/activity_utils.dart';
 import '../utils/image_utils.dart';
 import '../utils/share_utils.dart';
 
-/// A widget that displays the share map button
 class ShareMapButton extends HookConsumerWidget {
   final GlobalKey boundaryKey;
   final Activity activity;
 
-  /// Creates a [ShareMapButton] widget.
-  ///
-  /// The [boundaryKey] is the key of the widget to capture and share
   const ShareMapButton(
       {Key? key, required this.boundaryKey, required this.activity})
       : super(key: key);
@@ -28,7 +24,7 @@ class ShareMapButton extends HookConsumerWidget {
 
     Future<void> shareImageWithText(Uint8List image) async {
       String duration =
-          "${appLocalizations.duration}: ${timerViewModel.getFormattedTime(activity.time.toInt())}";
+          "${appLocalizations!.duration}: ${timerViewModel.getFormattedTime(activity.time.toInt())}";
       String distance =
           "${appLocalizations.distance}: ${activity.distance.toStringAsFixed(2)} km";
       String speed =

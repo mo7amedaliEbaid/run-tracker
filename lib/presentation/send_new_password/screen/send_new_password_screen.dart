@@ -10,7 +10,6 @@ import '../view_model/send_new_password_view_model.dart';
 class SendNewPasswordScreen extends HookConsumerWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  /// Constructs a [SendNewPasswordScreen].
   SendNewPasswordScreen({Key? key}) : super(key: key);
 
   @override
@@ -32,7 +31,7 @@ class SendNewPasswordScreen extends HookConsumerWidget {
                       child: Align(
                         alignment: AlignmentDirectional.topStart,
                         child: Text(
-                          AppLocalizations.of(context).send_new_password,
+                          AppLocalizations.of(context)!.send_new_password,
                           style: const TextStyle(
                               color: Colors.white, fontSize: 33),
                         ),
@@ -53,7 +52,7 @@ class SendNewPasswordScreen extends HookConsumerWidget {
                                 style: FormUtils.darkTextFormFieldStyle,
                                 cursorColor: Colors.teal.shade100,
                                 decoration: FormUtils.createInputDecorative(
-                                    AppLocalizations.of(context).email,
+                                    AppLocalizations.of(context)!.email,
                                     dark: true,
                                     icon: Icons.email),
                                 validator: (value) =>
@@ -74,7 +73,7 @@ class SendNewPasswordScreen extends HookConsumerWidget {
                                     const Icon(Icons.send),
                                     const SizedBox(width: 8),
                                     Text(
-                                      AppLocalizations.of(context).send_mail,
+                                      AppLocalizations.of(context)!.send_mail,
                                     ),
                                   ],
                                 ),
@@ -91,7 +90,7 @@ class SendNewPasswordScreen extends HookConsumerWidget {
                                   children: [
                                     const Icon(Icons.arrow_back),
                                     const SizedBox(width: 8),
-                                    Text(AppLocalizations.of(context).back),
+                                    Text(AppLocalizations.of(context)!.back),
                                   ],
                                 ),
                               ),

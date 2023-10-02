@@ -75,7 +75,7 @@ class MyApp extends HookConsumerWidget {
         '/activity_list': (context) => const ActivityListScreen()
       },
       navigatorKey: navigatorKey,
-      title: 'Run Flutter Run',
+      title: 'Run Tracker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textSelectionTheme: TextSelectionThemeData(

@@ -31,7 +31,7 @@ class RegistrationScreen extends HookConsumerWidget {
                       child: Align(
                         alignment: AlignmentDirectional.topStart,
                         child: Text(
-                          '${AppLocalizations.of(context).welcome},',
+                          '${AppLocalizations.of(context)!.welcome},',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 33,
@@ -51,7 +51,7 @@ class RegistrationScreen extends HookConsumerWidget {
                           TextFormField(
                             style: FormUtils.darkTextFormFieldStyle,
                             decoration: FormUtils.createInputDecorative(
-                              AppLocalizations.of(context).email,
+                              AppLocalizations.of(context)!.email,
                               dark: true,
                               icon: Icons.email,
                             ),
@@ -61,11 +61,10 @@ class RegistrationScreen extends HookConsumerWidget {
                               provider.setUsername(value);
                             },
                           ),
-                          // Password TextFormField
                           TextFormField(
                             style: FormUtils.darkTextFormFieldStyle,
                             decoration: FormUtils.createInputDecorative(
-                              AppLocalizations.of(context).password,
+                              AppLocalizations.of(context)!.password,
                               dark: true,
                               icon: Icons.password,
                             ),
@@ -80,7 +79,7 @@ class RegistrationScreen extends HookConsumerWidget {
                           TextFormField(
                             style: FormUtils.darkTextFormFieldStyle,
                             decoration: FormUtils.createInputDecorative(
-                              '${AppLocalizations.of(context).verify} ${AppLocalizations.of(context).password}',
+                              '${AppLocalizations.of(context)!.verify} ${AppLocalizations.of(context)!.password}',
                               dark: true,
                               icon: Icons.password,
                             ),
@@ -96,7 +95,6 @@ class RegistrationScreen extends HookConsumerWidget {
                             },
                           ),
                           const SizedBox(height: 50),
-                          // Validate Button
                           ElevatedButton(
                             style: FormUtils.buttonStyle,
                             onPressed: () {
@@ -107,12 +105,11 @@ class RegistrationScreen extends HookConsumerWidget {
                               children: [
                                 const Icon(Icons.check),
                                 const SizedBox(width: 8),
-                                Text(AppLocalizations.of(context).validate),
+                                Text(AppLocalizations.of(context)!.validate),
                               ],
                             ),
                           ),
                           const SizedBox(height: 20),
-                          // Back Button
                           ElevatedButton(
                             style: FormUtils.buttonStyle,
                             onPressed: () {
@@ -123,7 +120,7 @@ class RegistrationScreen extends HookConsumerWidget {
                               children: [
                                 const Icon(Icons.arrow_back),
                                 const SizedBox(width: 8),
-                                Text(AppLocalizations.of(context).back),
+                                Text(AppLocalizations.of(context)!.back),
                               ],
                             ),
                           ),

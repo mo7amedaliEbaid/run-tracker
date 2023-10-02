@@ -6,7 +6,6 @@ import '../../common/core/utils/ui_utils.dart';
 import '../view_model/activity_list_view_model.dart';
 import '../widgets/activity_item.dart';
 
-/// The screen that displays a list of activities.
 class ActivityListScreen extends HookConsumerWidget {
   const ActivityListScreen({Key? key}) : super(key: key);
 
@@ -24,7 +23,7 @@ class ActivityListScreen extends HookConsumerWidget {
                   Container(
                     padding: const EdgeInsets.only(left: 0, top: 12),
                     child: Text(
-                      AppLocalizations.of(context).activity_list,
+                      AppLocalizations.of(context)!.activity_list,
                       style: const TextStyle(
                           color: Colors.blueGrey,
                           fontSize: 28,

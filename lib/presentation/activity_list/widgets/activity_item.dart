@@ -10,7 +10,6 @@ import '../../common/core/utils/activity_utils.dart';
 import '../../common/core/utils/color_utils.dart';
 import '../view_model/activity_list_view_model.dart';
 
-/// A widget representing an item in the activity list.
 class ActivityItem extends HookConsumerWidget {
   final int index;
   final Activity activity;
@@ -27,7 +26,7 @@ class ActivityItem extends HookConsumerWidget {
 
     final appLocalizations = AppLocalizations.of(context);
     final formattedDateTime =
-        DateFormat('dd/MM/yyyy ${appLocalizations.hours_pronoun} HH:mm')
+        DateFormat('dd/MM/yyyy ${appLocalizations!.hours_pronoun} HH:mm')
             .format(activity.startDatetime);
 
     final List<Color> colors = ColorUtils.generateColorTupleFromIndex(index);
@@ -94,7 +93,7 @@ class ActivityItem extends HookConsumerWidget {
                         children: <Widget>[
                           Text(
                             ActivityUtils.translateActivityTypeValue(
-                              AppLocalizations.of(context),
+                              AppLocalizations.of(context)!,
                               activity.type,
                             ).toUpperCase(),
                             style: const TextStyle(

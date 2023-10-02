@@ -5,14 +5,8 @@ import '../../../../domain/entities/enum/activity_type.dart';
 import '../../../activity_details/view_model/activity_details_view_model.dart';
 import '../../../sum_up/view_model/sum_up_view_model.dart';
 
-/// Utility class for activity-related operations.
-class ActivityUtils {
-  /// Returns the icon associated with the given activity type.
-  ///
-  /// Returns [Icons.run_circle_outlined] for [ActivityType.running],
-  /// [Icons.nordic_walking] for [ActivityType.walking],
-  /// [Icons.pedal_bike] for [ActivityType.cycling], and
-  /// [Icons.run_circle_rounded] for any other activity type.
+interface class ActivityUtils {
+
   static IconData getActivityTypeIcon(ActivityType type) {
     switch (type) {
       case ActivityType.running:
@@ -26,15 +20,11 @@ class ActivityUtils {
     }
   }
 
-  /// Translates the name of the activity type using the provided localization.
-  ///
-  /// The [localization] is used to translate the activity type name.
   static String translateActivityTypeValue(
       AppLocalizations localization, ActivityType type) {
     return type.getTranslatedName(localization);
   }
 
-  /// Builds the dropdown button for selecting the activity type.
   static Widget buildActivityTypeDropdown<T>(
     BuildContext context,
     ActivityType selectedType,
@@ -48,7 +38,7 @@ class ActivityUtils {
                 const SizedBox(width: 10),
                 Text(
                   ActivityUtils.translateActivityTypeValue(
-                    AppLocalizations.of(context),
+                    AppLocalizations.of(context)!,
                     value,
                   ),
                 )

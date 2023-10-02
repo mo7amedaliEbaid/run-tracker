@@ -26,7 +26,7 @@ class EditPasswordScreen extends HookConsumerWidget {
                   Container(
                     padding: const EdgeInsets.only(left: 0, top: 12),
                     child: Text(
-                      AppLocalizations.of(context).edit_password,
+                      AppLocalizations.of(context)!.edit_password,
                       style: const TextStyle(
                           color: Colors.blueGrey,
                           fontSize: 28,
@@ -44,7 +44,7 @@ class EditPasswordScreen extends HookConsumerWidget {
                           state.errorOnRequest
                               ? Column(children: [
                                   Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .edit_password_error,
                                     style: const TextStyle(
                                         color: Colors.red, fontSize: 18),
@@ -52,11 +52,10 @@ class EditPasswordScreen extends HookConsumerWidget {
                                   const SizedBox(height: 20)
                                 ])
                               : Container(),
-                          // Current Password TextFormField
                           TextFormField(
                             style: FormUtils.textFormFieldStyle,
                             decoration: FormUtils.createInputDecorative(
-                              AppLocalizations.of(context).current_password,
+                              AppLocalizations.of(context)!.current_password,
                               dark: false,
                               icon: Icons.password,
                             ),
@@ -67,11 +66,10 @@ class EditPasswordScreen extends HookConsumerWidget {
                               provider.setCurrentPassword(value);
                             },
                           ),
-                          // Password TextFormField
                           TextFormField(
                             style: FormUtils.textFormFieldStyle,
                             decoration: FormUtils.createInputDecorative(
-                              AppLocalizations.of(context).new_password,
+                              AppLocalizations.of(context)!.new_password,
                               dark: false,
                               icon: Icons.password,
                             ),
@@ -82,11 +80,10 @@ class EditPasswordScreen extends HookConsumerWidget {
                               provider.setPassword(value);
                             },
                           ),
-                          // Confirm Password TextFormField
                           TextFormField(
                             style: FormUtils.textFormFieldStyle,
                             decoration: FormUtils.createInputDecorative(
-                              '${AppLocalizations.of(context).verify} ${AppLocalizations.of(context).password}',
+                              '${AppLocalizations.of(context)!.verify} ${AppLocalizations.of(context)!.password}',
                               dark: false,
                               icon: Icons.password,
                             ),

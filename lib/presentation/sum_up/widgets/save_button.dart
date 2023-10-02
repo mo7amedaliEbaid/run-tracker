@@ -3,11 +3,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../view_model/sum_up_view_model.dart';
 
-/// Represents the Save button widget.
 class SaveButton extends HookConsumerWidget {
   final bool disabled;
 
-  /// Creates a new instance of [SaveButton] with the given [disabled] state.
   const SaveButton({Key? key, required this.disabled}) : super(key: key);
 
   @override
@@ -26,7 +24,6 @@ class SaveButton extends HookConsumerWidget {
             : () {
                 provider.save();
                 Future.delayed(animationDuration, () {
-                  // Callback function to handle post-animation logic
                 });
               },
         child: const Icon(Icons.save),
