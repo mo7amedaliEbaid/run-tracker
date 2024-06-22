@@ -9,7 +9,7 @@ import '../user_api.dart';
 
 interface class ApiHelper {
 
-  static const String BASEURL = 'http://tiqorhzmyb.eu11.qoddiapp.com/api/';
+  static const String BASEURL = 'https://runbackendrun-6d3g5hh5.b4a.run/api/';
 
   static Future<Response?> makeRequest(
     String url,

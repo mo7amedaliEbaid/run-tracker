@@ -8,9 +8,9 @@ interface class LoginValidators {
     if (value == null || value.isEmpty) {
       return AppLocalizations.of(context)!.form_description_email_empty;
     }
-    if (!EmailValidator.validate(value)) {
+ /*   if (!EmailValidator.validate(value)) {
       return AppLocalizations.of(context)!.form_description_email_not_valid;
-    }
+    }*/
     return null;
   }
 
